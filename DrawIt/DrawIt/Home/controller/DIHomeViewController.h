@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  DIHomeViewController.h
 //  DrawIt
 //
 //  Created by ReckyLin on 2016/10/24.
 //  Copyright © 2016年 ywl-ios1. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DIBaseViewController.h"
 
-@interface ViewController : UIViewController
-
+@interface DIHomeViewController : DIBaseViewController
 
 @end
-
