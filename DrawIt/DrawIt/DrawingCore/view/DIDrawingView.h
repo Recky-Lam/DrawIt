@@ -14,7 +14,7 @@
 
 
 - (void)addPointsToDataSource:(CGPoint)point;
-
+- (void)saveCurrentPath;
 - (void)removeAllPoints;
 
 @end

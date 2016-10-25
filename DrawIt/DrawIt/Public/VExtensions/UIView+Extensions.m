@@ -38,7 +38,6 @@
     return self.frame.origin.x;
 }
 
-
 - (void)setLeft:(CGFloat)x {
     CGRect frame = self.frame;
     frame.origin.x = x;
@@ -223,6 +222,19 @@
     return CGPointMake(x, y);
 }
 
+- (UIImage *)screenshotWithQuality:(CGFloat)imageQuality {
+    UIGraphicsBeginImageContext(self.bounds.size);
+    if([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]){
+        [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
+    }else{
+        [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSData *imageData = UIImagePNGRepresentation(image);
+    image = [UIImage imageWithData:imageData];
+    return image;
+}
 
 #pragma mark 给View添加圆角
 

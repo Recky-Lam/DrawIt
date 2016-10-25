@@ -143,6 +143,8 @@
 //根据stringTag获取view
 -(UIView*)viewWithStringTag:(NSString*)tag;
 
+- (UIImage *)screenshotWithQuality:(CGFloat)imageQuality;
+
 @end
 
 //用typedef定义DismissBlock和CancelBlock
