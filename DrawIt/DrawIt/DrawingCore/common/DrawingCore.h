@@ -10,5 +10,6 @@
 #define DrawingCore_h
 
 #import "DIDrawingView.h"
+#import "DIDrawingToolBar.h"
 
 #endif /* DrawingCore_h */

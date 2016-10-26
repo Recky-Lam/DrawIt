@@ -35,6 +35,7 @@
 		61FA70311DBE0ED10035ED8E /* UIControl+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70211DBE0ED10035ED8E /* UIControl+Extensions.m */; };
 		61FA70321DBE0ED10035ED8E /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70231DBE0ED10035ED8E /* UIImage+Extensions.m */; };
 		61FA70331DBE0ED10035ED8E /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70251DBE0ED10035ED8E /* UIView+Extensions.m */; };
+		61FA70361DC059980035ED8E /* DIDrawingToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70351DC059980035ED8E /* DIDrawingToolBar.m */; };
 		981DF21924EEF1A9BD0FFA38 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 308328A01C75804F60DDE938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,8 @@
 		61FA70241DBE0ED10035ED8E /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		61FA70251DBE0ED10035ED8E /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		61FA70261DBE0ED10035ED8E /* VExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VExtensions.h; sourceTree = "<group>"; };
+		61FA70341DC059980035ED8E /* DIDrawingToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIDrawingToolBar.h; sourceTree = "<group>"; };
+		61FA70351DC059980035ED8E /* DIDrawingToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIDrawingToolBar.m; sourceTree = "<group>"; };
 		85C3ACF3CFC9FB0C86D95DFB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -452,6 +455,8 @@
 			children = (
 				61FA70061DBE08DC0035ED8E /* DIDrawingView.h */,
 				61FA70071DBE08DC0035ED8E /* DIDrawingView.m */,
+				61FA70341DC059980035ED8E /* DIDrawingToolBar.h */,
+				61FA70351DC059980035ED8E /* DIDrawingToolBar.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 				61FA6FFE1DBE02540035ED8E /* DIDrawViewController.m in Sources */,
 				61FA702F1DBE0ED10035ED8E /* UIActionSheet+Blocks.m in Sources */,
 				612407801DBDC47A006FFAF4 /* DIBaseViewController.m in Sources */,
+				61FA70361DC059980035ED8E /* DIDrawingToolBar.m in Sources */,
 				61FA702E1DBE0ED10035ED8E /* NSString+HTML.m in Sources */,
 				61FA6F801DBDDF1B0035ED8E /* DIHomeViewController.m in Sources */,
 				61FA6FA01DBDF5D10035ED8E /* DINavgationController.m in Sources */,
