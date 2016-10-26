@@ -153,6 +153,12 @@
     
 }
 
+- (void)undoLastAction
+{
+    [self.historyPoints removeLastObject];
+    [self setNeedsDisplay];
+}
+
 - (void)removeAllPoints
 {
     [self.historyPoints removeAllObjects];

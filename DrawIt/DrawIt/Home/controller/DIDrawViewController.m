@@ -94,6 +94,7 @@
             
             break;
         case DIDrawingToolUndo:
+            [self.canvans undoLastAction];
             
             break;
         default:
