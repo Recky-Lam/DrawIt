@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DZXViewController.h"
 
-@protocol YWUniversalDelegate <NSObject>
+@protocol DIBaseViewControllerDelegate <NSObject>
 
 @optional
 
@@ -21,17 +21,14 @@
 
 @end
 
-@class PPRequest;
 @interface DIBaseViewController : DZXViewController
 {
-    __unsafe_unretained id<YWUniversalDelegate>universalDelegate;
+    __unsafe_unretained id<DIBaseViewControllerDelegate>universalDelegate;
     UIImageView *bgImageView;
 }
 
-@property (nonatomic, assign)id<YWUniversalDelegate>universalDelegate;
+@property (nonatomic, assign)id<DIBaseViewControllerDelegate>universalDelegate;
 @property (nonatomic, strong) UIView *contentView;
-@property (nonatomic, strong) PPRequest *task;
-
 
 - (void)setTitle:(NSString *)title backButton:(BOOL)showBackButton;
 
