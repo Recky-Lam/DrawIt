@@ -15,19 +15,17 @@
 @property (nonatomic, strong) UIButton *colorButton;
 @property (nonatomic, strong) UIButton *deleteButton;
 
+@property (nonatomic, strong) UIView *whiteCover;
+@property (nonatomic, strong) UIView *childFunctionView;
+@property (nonatomic) BOOL isChildFunctionViewShow;
+@property (nonatomic) NSInteger lastFunction;
+
+@property (nonatomic, strong) UIButton *roundPen;
+@property (nonatomic, strong) UIButton *markPen;
+
 @end
 
 @implementation DIDrawingToolBar
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self setSize:CGSizeMake(kScreenWidth, 64)];
-        [self setBackgroundColor:[UIColor whiteColor]];
-    }
-    return self;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -35,18 +33,27 @@
     if (self) {
         [self setSize:CGSizeMake(kScreenWidth, 64)];
         [self setBackgroundColor:[UIColor whiteColor]];
+        
+        self.isChildFunctionViewShow = NO;
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-    [self setBackgroundColor:ClearColor];
     
-    [self addSubview:self.penShapeButton];
-    [self addSubview:self.lineSizeButton];
-    [self addSubview:self.colorButton];
-    [self addSubview:self.deleteButton];
+    [self setBackgroundColor:WhiteColor];
+    
+    [self addSubview:self.childFunctionView];
+    [self.childFunctionView autoPinEdgesToSuperviewEdges];
+    
+    [self addSubview:self.whiteCover];
+    [self.whiteCover autoPinEdgesToSuperviewEdges];
+    
+    [self.whiteCover addSubview:self.penShapeButton];
+    [self.whiteCover addSubview:self.lineSizeButton];
+    [self.whiteCover addSubview:self.colorButton];
+    [self.whiteCover addSubview:self.deleteButton];
     
     [self.penShapeButton autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [self.lineSizeButton autoPinEdgeToSuperviewEdge:ALEdgeTop];
@@ -65,6 +72,23 @@
 
 }
 
+- (void)animateChildFunctionView:(UIButton *)button
+{
+    self.lastFunction = button.tag;
+    self.isChildFunctionViewShow = !self.isChildFunctionViewShow;
+
+    [UIView animateWithDuration:0.1 animations:^{
+        if (!self.isChildFunctionViewShow) {
+            self.childFunctionView.y += 64;
+        }
+        else {
+            self.childFunctionView.y -= 64;
+        }
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 - (void)buttonClicked:(UIButton *)button
 {
     if ([self.toolBarDelegate respondsToSelector:@selector(didClickButtonOnIndex:)]) {
@@ -79,6 +103,26 @@
     }
 }
 
+- (UIView *)whiteCover
+{
+    if (!_whiteCover) {
+        _whiteCover = [UIView newAutoLayoutView];
+    }
+    [_whiteCover setBackgroundColor:WhiteColor];
+    
+    return _whiteCover;
+}
+
+- (UIView *)childFunctionView
+{
+    if (!_childFunctionView) {
+        _childFunctionView = [UIView newAutoLayoutView];
+    }
+    [_childFunctionView setBackgroundColor:BlackColor];
+    
+    return _childFunctionView;
+}
+
 - (UIButton *)penShapeButton
 {
     if (!_penShapeButton) {
@@ -87,7 +131,7 @@
     
     [_penShapeButton setImage:Image(@"toolbar_pen_shape") forState:UIControlStateNormal];
     [_penShapeButton setTag:DIDrawingToolPenSelect];
-    [_penShapeButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_penShapeButton addTarget:self action:@selector(animateChildFunctionView:) forControlEvents:UIControlEventTouchUpInside];
     
     return _penShapeButton;
 }
@@ -100,7 +144,7 @@
     
     [_lineSizeButton setImage:Image(@"toolbar_line_size") forState:UIControlStateNormal];
     [_lineSizeButton setTag:DIDrawingToolLineSize];
-    [_lineSizeButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_lineSizeButton addTarget:self action:@selector(animateChildFunctionView:) forControlEvents:UIControlEventTouchUpInside];
 
     return _lineSizeButton;
 }
