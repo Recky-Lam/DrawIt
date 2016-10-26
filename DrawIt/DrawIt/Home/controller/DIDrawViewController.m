@@ -58,7 +58,6 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.canvans saveCurrentPath];
-    NSLog(@"%@", @"touches end");
 }
 
 - (void)saveCurrentImage:(UIButton *)button
@@ -95,8 +94,12 @@
             break;
         case DIDrawingToolUndo:
             [self.canvans undoLastAction];
-            
             break;
+            
+        case DIDrawingToolDelete:
+            [self.canvans removeAllPoints];
+            break;
+            
         default:
             break;
     }

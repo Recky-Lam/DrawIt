@@ -145,9 +145,6 @@
 - (void)saveCurrentPath
 {
     [self.historyPoints addObject:[NSArray arrayWithArray:self.movePoints]];
-    
-//    NSLog(@"total points: %@", self.historyPoints);
-//    NSLog(@"saved points: %@", self.movePoints);
 
     [self.movePoints removeAllObjects];
     
@@ -162,6 +159,7 @@
 - (void)removeAllPoints
 {
     [self.historyPoints removeAllObjects];
+    [self setNeedsDisplay];
 }
 
 @end

@@ -72,6 +72,13 @@
     }
 }
 
+- (void)cleanCanvans
+{
+    if ([self.toolBarDelegate respondsToSelector:@selector(didClickButtonOnIndex:)]) {
+        [self.toolBarDelegate didClickButtonOnIndex:DIDrawingToolDelete];
+    }
+}
+
 - (UIButton *)penShapeButton
 {
     if (!_penShapeButton) {
@@ -120,6 +127,10 @@
     [_deleteButton setImage:Image(@"toolbar_undo") forState:UIControlStateNormal];
     [_deleteButton setTag:DIDrawingToolUndo];
     [_deleteButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cleanCanvans)];
+    longPressGR.minimumPressDuration = 1.0;
+    [_deleteButton addGestureRecognizer:longPressGR];
 
     return _deleteButton;
 }

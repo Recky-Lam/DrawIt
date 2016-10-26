@@ -11,6 +11,7 @@ typedef enum {
     DIDrawingToolLineSize = 2,
     DIDrawingToolColorSelect = 3,
     DIDrawingToolUndo = 4,
+    DIDrawingToolDelete = 5,
 }DIDrawingTool;
 
 #import <UIKit/UIKit.h>
