@@ -83,7 +83,22 @@
 
 - (void)didClickButtonOnIndex:(NSInteger)index
 {
-    NSLog(@"%ld", (long)index);
+    switch (index) {
+        case DIDrawingToolPenSelect:
+            
+            break;
+        case DIDrawingToolLineSize:
+            
+            break;
+        case DIDrawingToolColorSelect:
+            
+            break;
+        case DIDrawingToolUndo:
+            
+            break;
+        default:
+            break;
+    }
 }
 
 @end
