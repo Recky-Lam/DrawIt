@@ -27,6 +27,8 @@
 
 - (void)loadView{
     [super loadView];
+    
+    
     [self.view setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -37,6 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setNavigationBackgroundColor:DIColorDarkGray];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -116,17 +120,22 @@
 }
 
 
--(void)rightBarButtonItemAction:(UIButton *)btn
+- (void)rightBarButtonItemAction:(UIButton *)btn
 {
     
 }
 
--(void)back:(UIButton *)btn
+- (void)back:(UIButton *)btn
 {
     if(![self.navigationController popViewControllerAnimated:YES]){
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
     
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

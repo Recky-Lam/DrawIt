@@ -97,12 +97,7 @@
         self.lastFunction = button.tag;
 
         [UIView animateWithDuration:0.1 animations:^{
-//            if (!self.isChildFunctionViewShow) {
-                self.childFunctionView.y += 64;
-//            }
-//            else {
-//                self.childFunctionView.y -= 64;
-//            }
+            self.childFunctionView.y += 64;
         } completion:^(BOOL finished) {
             
         }];
@@ -110,7 +105,7 @@
     else {
         
         self.lastFunction = button.tag;
-
+        
         [UIView animateWithDuration:0.1 animations:^{
             self.childFunctionView.y += 64;
         } completion:^(BOOL finished) {
@@ -121,7 +116,6 @@
             }];
             
         }];
-        
     }
     
 }

@@ -13,6 +13,10 @@
 		6141C88A1DBDBA2B002EEBD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6141C8891DBDBA2B002EEBD7 /* Assets.xcassets */; };
 		6141C8981DBDBA2B002EEBD7 /* DrawItTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141C8971DBDBA2B002EEBD7 /* DrawItTests.m */; };
 		6141C8A31DBDBA2B002EEBD7 /* DrawItUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6141C8A21DBDBA2B002EEBD7 /* DrawItUITests.m */; };
+		6172E1181DC208B7003FD670 /* DIPenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172E1101DC208B7003FD670 /* DIPenModel.m */; };
+		6172E1191DC208B7003FD670 /* DIPointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172E1121DC208B7003FD670 /* DIPointModel.m */; };
+		6172E11A1DC208B7003FD670 /* DIDrawingToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172E1151DC208B7003FD670 /* DIDrawingToolBar.m */; };
+		6172E11B1DC208B7003FD670 /* DIDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172E1171DC208B7003FD670 /* DIDrawingView.m */; };
 		61FA6F7B1DBDD6260035ED8E /* DZXBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F761DBDD6260035ED8E /* DZXBarButtonItem.m */; };
 		61FA6F7C1DBDD6260035ED8E /* DZXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F781DBDD6260035ED8E /* DZXNavigationController.m */; };
 		61FA6F7D1DBDD6260035ED8E /* DZXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F7A1DBDD6260035ED8E /* DZXViewController.m */; };
@@ -21,7 +25,6 @@
 		61FA6F9B1DBDEB670035ED8E /* DIMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F9A1DBDEB670035ED8E /* DIMineViewController.m */; };
 		61FA6FA01DBDF5D10035ED8E /* DINavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F9F1DBDF5D10035ED8E /* DINavgationController.m */; };
 		61FA6FFE1DBE02540035ED8E /* DIDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6FFD1DBE02540035ED8E /* DIDrawViewController.m */; };
-		61FA70081DBE08DC0035ED8E /* DIDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70071DBE08DC0035ED8E /* DIDrawingView.m */; };
 		61FA70271DBE0ED10035ED8E /* CGRect+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA700D1DBE0ED10035ED8E /* CGRect+Extensions.m */; };
 		61FA70281DBE0ED10035ED8E /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA700F1DBE0ED10035ED8E /* GTMNSString+HTML.m */; };
 		61FA70291DBE0ED10035ED8E /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70111DBE0ED10035ED8E /* NSArray+Extensions.m */; };
@@ -35,7 +38,6 @@
 		61FA70311DBE0ED10035ED8E /* UIControl+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70211DBE0ED10035ED8E /* UIControl+Extensions.m */; };
 		61FA70321DBE0ED10035ED8E /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70231DBE0ED10035ED8E /* UIImage+Extensions.m */; };
 		61FA70331DBE0ED10035ED8E /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70251DBE0ED10035ED8E /* UIView+Extensions.m */; };
-		61FA70361DC059980035ED8E /* DIDrawingToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA70351DC059980035ED8E /* DIDrawingToolBar.m */; };
 		981DF21924EEF1A9BD0FFA38 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 308328A01C75804F60DDE938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,15 @@
 		6141C89E1DBDBA2B002EEBD7 /* DrawItUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawItUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6141C8A21DBDBA2B002EEBD7 /* DrawItUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawItUITests.m; sourceTree = "<group>"; };
 		6141C8A41DBDBA2B002EEBD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6172E10D1DC208B7003FD670 /* DrawingCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingCore.h; sourceTree = "<group>"; };
+		6172E10F1DC208B7003FD670 /* DIPenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIPenModel.h; sourceTree = "<group>"; };
+		6172E1101DC208B7003FD670 /* DIPenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIPenModel.m; sourceTree = "<group>"; };
+		6172E1111DC208B7003FD670 /* DIPointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIPointModel.h; sourceTree = "<group>"; };
+		6172E1121DC208B7003FD670 /* DIPointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIPointModel.m; sourceTree = "<group>"; };
+		6172E1141DC208B7003FD670 /* DIDrawingToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIDrawingToolBar.h; sourceTree = "<group>"; };
+		6172E1151DC208B7003FD670 /* DIDrawingToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIDrawingToolBar.m; sourceTree = "<group>"; };
+		6172E1161DC208B7003FD670 /* DIDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIDrawingView.h; sourceTree = "<group>"; };
+		6172E1171DC208B7003FD670 /* DIDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIDrawingView.m; sourceTree = "<group>"; };
 		61FA6F731DBDD39D0035ED8E /* BaseImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseImport.h; sourceTree = "<group>"; };
 		61FA6F751DBDD6260035ED8E /* DZXBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZXBarButtonItem.h; sourceTree = "<group>"; };
 		61FA6F761DBDD6260035ED8E /* DZXBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZXBarButtonItem.m; sourceTree = "<group>"; };
@@ -94,9 +105,6 @@
 		61FA6F9F1DBDF5D10035ED8E /* DINavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DINavgationController.m; sourceTree = "<group>"; };
 		61FA6FFC1DBE02540035ED8E /* DIDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIDrawViewController.h; sourceTree = "<group>"; };
 		61FA6FFD1DBE02540035ED8E /* DIDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIDrawViewController.m; sourceTree = "<group>"; };
-		61FA70061DBE08DC0035ED8E /* DIDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIDrawingView.h; sourceTree = "<group>"; };
-		61FA70071DBE08DC0035ED8E /* DIDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIDrawingView.m; sourceTree = "<group>"; };
-		61FA700A1DBE09530035ED8E /* DrawingCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingCore.h; sourceTree = "<group>"; };
 		61FA700C1DBE0ED10035ED8E /* CGRect+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGRect+Extensions.h"; sourceTree = "<group>"; };
 		61FA700D1DBE0ED10035ED8E /* CGRect+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGRect+Extensions.m"; sourceTree = "<group>"; };
 		61FA700E1DBE0ED10035ED8E /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
@@ -124,8 +132,6 @@
 		61FA70241DBE0ED10035ED8E /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		61FA70251DBE0ED10035ED8E /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		61FA70261DBE0ED10035ED8E /* VExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VExtensions.h; sourceTree = "<group>"; };
-		61FA70341DC059980035ED8E /* DIDrawingToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIDrawingToolBar.h; sourceTree = "<group>"; };
-		61FA70351DC059980035ED8E /* DIDrawingToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIDrawingToolBar.m; sourceTree = "<group>"; };
 		85C3ACF3CFC9FB0C86D95DFB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,8 +271,8 @@
 		612407811DBDC7AF006FFAF4 /* macros */ = {
 			isa = PBXGroup;
 			children = (
-				61FA6F9D1DBDF3890035ED8E /* PodImport.h */,
 				61FA6F731DBDD39D0035ED8E /* BaseImport.h */,
+				61FA6F9D1DBDF3890035ED8E /* PodImport.h */,
 				6124078A1DBDCE66006FFAF4 /* BaseMacros.h */,
 				6124078B1DBDCE74006FFAF4 /* ConfigMacros.h */,
 			);
@@ -306,7 +312,7 @@
 		6141C87C1DBDBA2B002EEBD7 /* DrawIt */ = {
 			isa = PBXGroup;
 			children = (
-				61FA70001DBE07FC0035ED8E /* DrawingCore */,
+				6172E10B1DC208B7003FD670 /* DrawingCore */,
 				612407721DBDC3B7006FFAF4 /* Base */,
 				612407781DBDC3B7006FFAF4 /* Home */,
 				61FA6F931DBDE9F40035ED8E /* Main */,
@@ -344,6 +350,46 @@
 				6141C8A41DBDBA2B002EEBD7 /* Info.plist */,
 			);
 			path = DrawItUITests;
+			sourceTree = "<group>";
+		};
+		6172E10B1DC208B7003FD670 /* DrawingCore */ = {
+			isa = PBXGroup;
+			children = (
+				6172E10C1DC208B7003FD670 /* common */,
+				6172E10E1DC208B7003FD670 /* model */,
+				6172E1131DC208B7003FD670 /* view */,
+			);
+			path = DrawingCore;
+			sourceTree = "<group>";
+		};
+		6172E10C1DC208B7003FD670 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				6172E10D1DC208B7003FD670 /* DrawingCore.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		6172E10E1DC208B7003FD670 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6172E10F1DC208B7003FD670 /* DIPenModel.h */,
+				6172E1101DC208B7003FD670 /* DIPenModel.m */,
+				6172E1111DC208B7003FD670 /* DIPointModel.h */,
+				6172E1121DC208B7003FD670 /* DIPointModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		6172E1131DC208B7003FD670 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6172E1141DC208B7003FD670 /* DIDrawingToolBar.h */,
+				6172E1151DC208B7003FD670 /* DIDrawingToolBar.m */,
+				6172E1161DC208B7003FD670 /* DIDrawingView.h */,
+				6172E1171DC208B7003FD670 /* DIDrawingView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		61FA6F741DBDD6260035ED8E /* DZXNavigation */ = {
@@ -414,66 +460,6 @@
 				61FA700B1DBE0ED10035ED8E /* VExtensions */,
 			);
 			path = Public;
-			sourceTree = "<group>";
-		};
-		61FA70001DBE07FC0035ED8E /* DrawingCore */ = {
-			isa = PBXGroup;
-			children = (
-				61FA70091DBE09230035ED8E /* common */,
-				61FA70011DBE07FC0035ED8E /* controller */,
-				61FA70021DBE07FC0035ED8E /* model */,
-				61FA70031DBE07FC0035ED8E /* service */,
-				61FA70041DBE07FC0035ED8E /* view */,
-				61FA70051DBE07FC0035ED8E /* viewModel */,
-			);
-			path = DrawingCore;
-			sourceTree = "<group>";
-		};
-		61FA70011DBE07FC0035ED8E /* controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		61FA70021DBE07FC0035ED8E /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		61FA70031DBE07FC0035ED8E /* service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = service;
-			sourceTree = "<group>";
-		};
-		61FA70041DBE07FC0035ED8E /* view */ = {
-			isa = PBXGroup;
-			children = (
-				61FA70061DBE08DC0035ED8E /* DIDrawingView.h */,
-				61FA70071DBE08DC0035ED8E /* DIDrawingView.m */,
-				61FA70341DC059980035ED8E /* DIDrawingToolBar.h */,
-				61FA70351DC059980035ED8E /* DIDrawingToolBar.m */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		61FA70051DBE07FC0035ED8E /* viewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = viewModel;
-			sourceTree = "<group>";
-		};
-		61FA70091DBE09230035ED8E /* common */ = {
-			isa = PBXGroup;
-			children = (
-				61FA700A1DBE09530035ED8E /* DrawingCore.h */,
-			);
-			path = common;
 			sourceTree = "<group>";
 		};
 		61FA700B1DBE0ED10035ED8E /* VExtensions */ = {
@@ -597,6 +583,7 @@
 				TargetAttributes = {
 					6141C8791DBDBA2B002EEBD7 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = N53G8V4MHR;
 						ProvisioningStyle = Automatic;
 					};
 					6141C8921DBDBA2B002EEBD7 = {
@@ -696,17 +683,19 @@
 			files = (
 				61FA6FFE1DBE02540035ED8E /* DIDrawViewController.m in Sources */,
 				61FA702F1DBE0ED10035ED8E /* UIActionSheet+Blocks.m in Sources */,
+				6172E11B1DC208B7003FD670 /* DIDrawingView.m in Sources */,
 				612407801DBDC47A006FFAF4 /* DIBaseViewController.m in Sources */,
-				61FA70361DC059980035ED8E /* DIDrawingToolBar.m in Sources */,
 				61FA702E1DBE0ED10035ED8E /* NSString+HTML.m in Sources */,
 				61FA6F801DBDDF1B0035ED8E /* DIHomeViewController.m in Sources */,
+				6172E1191DC208B7003FD670 /* DIPointModel.m in Sources */,
 				61FA6FA01DBDF5D10035ED8E /* DINavgationController.m in Sources */,
 				61FA702A1DBE0ED10035ED8E /* NSData+Extensions.m in Sources */,
 				6141C8821DBDBA2B002EEBD7 /* AppDelegate.m in Sources */,
 				6141C87F1DBDBA2B002EEBD7 /* main.m in Sources */,
-				61FA70081DBE08DC0035ED8E /* DIDrawingView.m in Sources */,
+				6172E1181DC208B7003FD670 /* DIPenModel.m in Sources */,
 				61FA70291DBE0ED10035ED8E /* NSArray+Extensions.m in Sources */,
 				61FA702D1DBE0ED10035ED8E /* NSString+Extensions.m in Sources */,
+				6172E11A1DC208B7003FD670 /* DIDrawingToolBar.m in Sources */,
 				61FA6F861DBDE1380035ED8E /* DITabBarController.m in Sources */,
 				61FA702B1DBE0ED10035ED8E /* NSDate+Extensions.m in Sources */,
 				61FA6F9B1DBDEB670035ED8E /* DIMineViewController.m in Sources */,
@@ -852,7 +841,7 @@
 			baseConfigurationReference = 85C3ACF3CFC9FB0C86D95DFB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N53G8V4MHR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/ywl-ios1/Desktop/DrawIt/DrawIt/DrawIt/Base/import/PrefixHeader.pch";
 				INFOPLIST_FILE = DrawIt/Info.plist;
@@ -868,7 +857,7 @@
 			baseConfigurationReference = 30BADEE402B3C2F3546CF6BB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N53G8V4MHR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/ywl-ios1/Desktop/DrawIt/DrawIt/DrawIt/Base/import/PrefixHeader.pch";
 				INFOPLIST_FILE = DrawIt/Info.plist;

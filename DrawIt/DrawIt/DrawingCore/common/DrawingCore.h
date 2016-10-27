@@ -11,5 +11,7 @@
 
 #import "DIDrawingView.h"
 #import "DIDrawingToolBar.h"
+#import "DIPenModel.h"
+#import "DIPointModel.h"
 
 #endif /* DrawingCore_h */

@@ -29,6 +29,7 @@
     UIButton *share = [UIButton createButton:CGRectMake(0, 0, 33, 33) action:nil delegate:self normalImage:Image(@"nav_share") highlightedImage:Image(@"nav_share") title:nil font:nil color:nil];
     
     [self setNavigationRightButtons:@[save, share]];
+    
     self.canvans = [[DIDrawingView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, self.contentView.height)];
     [self.canvans setBackgroundColor:WhiteColor];
     [self.contentView addSubview:self.canvans];
@@ -43,7 +44,11 @@
 {
     NSArray *pointsArray = [touches allObjects];
     CGPoint lastPoint = [[pointsArray objectAtIndex:0] locationInView:self.canvans];
-    [self.canvans addPointsToDataSource:lastPoint];
+    
+    DIPointModel *point = [[DIPointModel alloc] init];
+    point.location = lastPoint;
+    
+    [self.canvans addPointsToDataSource:point];
     [self.canvans setNeedsDisplay];
 }
 
@@ -51,7 +56,11 @@
 {
     NSArray *pointsArray = [touches allObjects];
     CGPoint lastPoint = [[pointsArray objectAtIndex:0] locationInView:self.canvans];
-    [self.canvans addPointsToDataSource:lastPoint];
+    
+    DIPointModel *point = [[DIPointModel alloc] init];
+    point.location = lastPoint;
+    
+    [self.canvans addPointsToDataSource:point];
     [self.canvans setNeedsDisplay];
 }
 

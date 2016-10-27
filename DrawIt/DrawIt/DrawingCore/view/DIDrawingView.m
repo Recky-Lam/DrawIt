@@ -14,7 +14,6 @@
 
 @end
 
-
 @implementation DIDrawingView
 
 - (instancetype)init
@@ -57,8 +56,8 @@
         [self.historyPoints enumerateObjectsUsingBlock:^(NSMutableArray *pointsArray, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([pointsArray count] == 1) {
 
-                CGPoint startPoint = [[pointsArray objectAtIndex:0] CGPointValue];
-                [self drawPoint:startPoint Contex:context];
+                DIPointModel *point = pointsArray[0];
+                [self drawPoint:point Contex:context];
             }
             
             if ([pointsArray count] > 1) {
@@ -71,8 +70,8 @@
     
     if ([self.movePoints count] == 1) {
 
-        CGPoint startPoint = [[self.movePoints objectAtIndex:0] CGPointValue];
-        [self drawPoint:startPoint Contex:context];
+        DIPointModel *point = self.movePoints[0];
+        [self drawPoint:point Contex:context];
 
     }
 
@@ -84,19 +83,19 @@
 
 }
 
-- (void)drawPoint:(CGPoint)point Contex:(CGContextRef)context
+- (void)drawPoint:(DIPointModel *)point Contex:(CGContextRef)context
 {
     CGContextBeginPath(context);
     
-    CGContextMoveToPoint(context, point.x, point.y);
-    CGContextAddLineToPoint(context, point.x, point.y);
+    CGContextMoveToPoint(context, point.location.x, point.location.y);
+    CGContextAddLineToPoint(context, point.location.x, point.location.y);
     
     float           Intsegmentwidth;
     CGColorRef      segmentColor;
     
     //在颜色和画笔大小数组里面取不相应的值
-    segmentColor = [UIColor blackColor].CGColor;
-    Intsegmentwidth = 10.0f;
+    segmentColor = point.pen.lineColor.CGColor;
+    Intsegmentwidth = [point.pen.lineWidth floatValue];
     
     //绘制画笔颜色
     CGContextSetStrokeColorWithColor(context, segmentColor);
@@ -110,22 +109,25 @@
 
 - (void)drawLine:(NSArray *)points Contex:(CGContextRef)context
 {
+    DIPointModel *point = points[0];
+    
     CGContextBeginPath(context);
     
-    CGPoint startPoint = [[points objectAtIndex:0] CGPointValue];
+    CGPoint startPoint = point.location;
     CGContextMoveToPoint(context, startPoint.x, startPoint.y);
     //把move的点全部加入　数组
     for (int i = 0; i < [points count] - 1; i++) {
-        CGPoint endPoint = [[points objectAtIndex:i + 1] CGPointValue];
-        CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
+        DIPointModel *endPoint = [points objectAtIndex:i + 1];
+        CGPoint endPointLocation = endPoint.location;
+        CGContextAddLineToPoint(context, endPointLocation.x, endPointLocation.y);
     }
     
     float           Intsegmentwidth;
     CGColorRef      segmentColor;
     
     //在颜色和画笔大小数组里面取不相应的值
-    segmentColor = [UIColor blackColor].CGColor;
-    Intsegmentwidth = 10.0f;
+    segmentColor = point.pen.lineColor.CGColor;
+    Intsegmentwidth = [point.pen.lineWidth floatValue];
     
     //绘制画笔颜色
     CGContextSetStrokeColorWithColor(context, segmentColor);
@@ -137,9 +139,9 @@
 
 }
 
-- (void)addPointsToDataSource:(CGPoint)point
+- (void)addPointsToDataSource:(DIPointModel *)point
 {
-    [self.movePoints addObject:[NSValue valueWithCGPoint:point]];
+    [self.movePoints addObject:point];
 }
 
 - (void)saveCurrentPath

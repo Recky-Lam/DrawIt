@@ -71,7 +71,7 @@
     _labelTitle.center = center;
     
     //文字基本设置
-    _labelTitle.textColor = RGB(81,70,71,1);
+    _labelTitle.textColor = DIColorWhite;
     _labelTitle.numberOfLines = 1;
     _labelTitle.lineBreakMode = NSLineBreakByTruncatingTail;
     _labelTitle.textAlignment = NSTextAlignmentCenter;

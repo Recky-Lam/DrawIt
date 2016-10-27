@@ -64,11 +64,11 @@
 - (BOOL) isThisYear;
 - (BOOL) isNextYear;
 - (BOOL) isLastYear;
-- (BOOL) isEarlierThanDate: (NSDate *) aDate; //<
-- (BOOL) isLaterThanDate: (NSDate *) aDate; //>
-- (BOOL) isEarlierOrEqualDate: (NSDate *) aDate;//<=
-- (BOOL) isEqualDate:(NSDate *)date;//=
-- (BOOL) isLaterOrEqualDate: (NSDate *) aDate;//>=
+- (BOOL) isEarlierThanDate: (NSDate *) aDate;
+- (BOOL) isLaterThanDate: (NSDate *) aDate;
+- (BOOL) isEarlierOrEqualDate: (NSDate *) aDate;
+- (BOOL) isEqualDate:(NSDate *)date;
+- (BOOL) isLaterOrEqualDate: (NSDate *) aDate;
 - (BOOL) isInFuture;
 - (BOOL) isInPast;
 

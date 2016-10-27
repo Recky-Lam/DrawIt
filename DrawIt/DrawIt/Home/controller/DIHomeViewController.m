@@ -21,8 +21,8 @@
     [super viewDidLoad];
     
     [self setTitle:@"Draw It" backButton:NO];
-    
-    [self.contentView setBackgroundColor:RedColor];
+        
+    [self.contentView setBackgroundColor:WhiteColor];
     
     [self buildElements];
 }
@@ -44,6 +44,7 @@
     }
     
     [_drawButton setTitle:@"draw" forState:UIControlStateNormal];
+    [_drawButton setTitleColor:BlackColor forState:UIControlStateNormal];
     [_drawButton addTarget:self action:@selector(drawButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     return _drawButton;
 }

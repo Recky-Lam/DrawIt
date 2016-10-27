@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DIPointModel.h"
 
 @interface DIDrawingView : UIView
 
 @property (nonatomic, strong) NSMutableArray *movePoints;
 
-
-- (void)addPointsToDataSource:(CGPoint)point;
+- (void)addPointsToDataSource:(DIPointModel *)point;
 - (void)saveCurrentPath;
 - (void)undoLastAction;
 - (void)removeAllPoints;
