@@ -23,7 +23,7 @@
     
     [self setTitle:@"画吧画吧画吧" backButton:YES];
     
-    [self.contentView setHeight:self.contentView.height - 64];
+    [self.contentView setHeight:self.contentView.height - 84];
     
     UIButton *save = [UIButton createButton:CGRectMake(0, 0, 33, 33) action:@selector(saveCurrentImage:) delegate:self normalImage:Image(@"nav_save") highlightedImage:Image(@"nav_save") title:nil font:nil color:nil];
     UIButton *share = [UIButton createButton:CGRectMake(0, 0, 33, 33) action:nil delegate:self normalImage:Image(@"nav_share") highlightedImage:Image(@"nav_share") title:nil font:nil color:nil];

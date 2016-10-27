@@ -10,6 +10,8 @@
 
 @interface DIDrawingToolBar ()
 
+@property (nonatomic) CGRect originalFrame;
+
 @property (nonatomic, strong) UIButton *penShapeButton;
 @property (nonatomic, strong) UIButton *lineSizeButton;
 @property (nonatomic, strong) UIButton *colorButton;
@@ -31,6 +33,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.originalFrame = frame;
+        
         [self setSize:CGSizeMake(kScreenWidth, 64)];
         [self setBackgroundColor:[UIColor whiteColor]];
         
@@ -64,29 +69,61 @@
     [self.lineSizeButton autoSetDimensionsToSize:CGSizeMake(kScreenWidth / 4, 64)];
     [self.colorButton autoSetDimensionsToSize:CGSizeMake(kScreenWidth / 4, 64)];
     [self.deleteButton autoSetDimensionsToSize:CGSizeMake(kScreenWidth / 4, 64)];
-
+    
     [self.penShapeButton autoPinEdgeToSuperviewEdge:ALEdgeLeft];
     [self.lineSizeButton autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.penShapeButton];
     [self.colorButton autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.lineSizeButton];
     [self.deleteButton autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.colorButton];
-
+    
 }
 
 - (void)animateChildFunctionView:(UIButton *)button
 {
-    self.lastFunction = button.tag;
-    self.isChildFunctionViewShow = !self.isChildFunctionViewShow;
-
-    [UIView animateWithDuration:0.1 animations:^{
-        if (!self.isChildFunctionViewShow) {
-            self.childFunctionView.y += 64;
-        }
-        else {
-            self.childFunctionView.y -= 64;
-        }
-    } completion:^(BOOL finished) {
+    if (!self.isChildFunctionViewShow) {
+ 
+        self.lastFunction = button.tag;
         
-    }];
+        self.isChildFunctionViewShow = !self.isChildFunctionViewShow;
+
+        [UIView animateWithDuration:0.1 animations:^{
+            self.childFunctionView.y -= 64;
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+    }else if (self.lastFunction == button.tag) {
+        
+        self.isChildFunctionViewShow = !self.isChildFunctionViewShow;
+        self.lastFunction = button.tag;
+
+        [UIView animateWithDuration:0.1 animations:^{
+//            if (!self.isChildFunctionViewShow) {
+                self.childFunctionView.y += 64;
+//            }
+//            else {
+//                self.childFunctionView.y -= 64;
+//            }
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    else {
+        
+        self.lastFunction = button.tag;
+
+        [UIView animateWithDuration:0.1 animations:^{
+            self.childFunctionView.y += 64;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.1 animations:^{
+                self.childFunctionView.y -= 64;
+            } completion:^(BOOL finished) {
+                
+            }];
+            
+        }];
+        
+    }
+    
 }
 
 - (void)buttonClicked:(UIButton *)button
@@ -145,7 +182,7 @@
     [_lineSizeButton setImage:Image(@"toolbar_line_size") forState:UIControlStateNormal];
     [_lineSizeButton setTag:DIDrawingToolLineSize];
     [_lineSizeButton addTarget:self action:@selector(animateChildFunctionView:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     return _lineSizeButton;
 }
 
@@ -158,7 +195,7 @@
     [_colorButton setImage:Image(@"toolbar_color") forState:UIControlStateNormal];
     [_colorButton setTag:DIDrawingToolColorSelect];
     [_colorButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     return _colorButton;
 }
 
@@ -175,7 +212,7 @@
     UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cleanCanvans)];
     longPressGR.minimumPressDuration = 1.0;
     [_deleteButton addGestureRecognizer:longPressGR];
-
+    
     return _deleteButton;
 }
 
