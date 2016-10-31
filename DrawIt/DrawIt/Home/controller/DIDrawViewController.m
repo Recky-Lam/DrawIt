@@ -34,7 +34,7 @@
     [self.canvans setBackgroundColor:WhiteColor];
     [self.contentView addSubview:self.canvans];
     
-    self.toolBar = [[DIDrawingToolBar alloc] initWithFrame:CGRectMake(0, self.view.height - 64, kScreenWidth, 64)];
+    self.toolBar = [[DIDrawingToolBar alloc] initWithFrame:CGRectMake(0, self.view.height - 128, kScreenWidth, 128)];
     [self.toolBar setToolBarDelegate:self];
     
     [self.view addSubview:self.toolBar];

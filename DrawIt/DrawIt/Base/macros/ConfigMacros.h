@@ -20,6 +20,7 @@
 #define DIColorDarkGray     RGB(87, 96, 105, 1)
 #define DIColorLightGray    RGB(175, 195, 192, 1)
 #define DIColorWhite        RGB(243, 244, 246, 1)
+#define DIColorLightWhite   RGB(250, 250, 250, 1)
 #define DIColorMintGreen    RGB(185, 227, 217, 1)
 
 #endif /* ConfigMacros_h */

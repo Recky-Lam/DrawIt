@@ -18,12 +18,18 @@
 @property (nonatomic, strong) UIButton *deleteButton;
 
 @property (nonatomic, strong) UIView *whiteCover;
-@property (nonatomic, strong) UIView *childFunctionView;
+@property (nonatomic, strong) UIView *penFunctionView;
+@property (nonatomic, strong) UIView *linesizeFunctionView;
+
 @property (nonatomic) BOOL isChildFunctionViewShow;
 @property (nonatomic) NSInteger lastFunction;
 
 @property (nonatomic, strong) UIButton *roundPen;
 @property (nonatomic, strong) UIButton *markPen;
+@property (nonatomic, strong) UIButton *eraser;
+
+@property (nonatomic, strong) UISlider *sizeSlider;
+@property (nonatomic, strong) UILabel *lineSize;
 
 @end
 
@@ -36,25 +42,34 @@
         
         self.originalFrame = frame;
         
-        [self setSize:CGSizeMake(kScreenWidth, 64)];
-        [self setBackgroundColor:[UIColor whiteColor]];
+        [self setSize:CGSizeMake(kScreenWidth, 128)];
         
         self.isChildFunctionViewShow = NO;
+        
+        [self setBackgroundColor:ClearColor];
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
+    [self addSubview:self.penFunctionView];
+    [self addSubview:self.linesizeFunctionView];
     
-    [self setBackgroundColor:WhiteColor];
+    [self buildPenSelect];
+    [self buildLineSizeSelect];
     
-    [self addSubview:self.childFunctionView];
-    [self.childFunctionView autoPinEdgesToSuperviewEdges];
+    [self.penFunctionView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+    [self.penFunctionView autoSetDimensionsToSize:CGSizeMake(kScreenWidth, 64)];
+    
+    [self.linesizeFunctionView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+    [self.linesizeFunctionView autoSetDimensionsToSize:CGSizeMake(kScreenWidth, 64)];
     
     [self addSubview:self.whiteCover];
-    [self.whiteCover autoPinEdgesToSuperviewEdges];
     
+    [self.whiteCover autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+    [self.whiteCover autoSetDimensionsToSize:CGSizeMake(kScreenWidth, 64)];
+
     [self.whiteCover addSubview:self.penShapeButton];
     [self.whiteCover addSubview:self.lineSizeButton];
     [self.whiteCover addSubview:self.colorButton];
@@ -79,6 +94,7 @@
 
 - (void)animateChildFunctionView:(UIButton *)button
 {
+
     if (!self.isChildFunctionViewShow) {
  
         self.lastFunction = button.tag;
@@ -86,20 +102,25 @@
         self.isChildFunctionViewShow = !self.isChildFunctionViewShow;
 
         [UIView animateWithDuration:0.1 animations:^{
-            self.childFunctionView.y -= 64;
-        } completion:^(BOOL finished) {
-            
+            if (button.tag == DIDrawingToolPenSelect) {
+                [self.penFunctionView setFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+            }
+            else if (button.tag == DIDrawingToolLineSize)
+            {
+                [self.linesizeFunctionView setFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+            }
+
         }];
         
     }else if (self.lastFunction == button.tag) {
-        
+
         self.isChildFunctionViewShow = !self.isChildFunctionViewShow;
         self.lastFunction = button.tag;
 
         [UIView animateWithDuration:0.1 animations:^{
-            self.childFunctionView.y += 64;
-        } completion:^(BOOL finished) {
-            
+            [self.linesizeFunctionView setFrame:CGRectMake(0, 64, kScreenWidth, 64)];
+
+            [self.penFunctionView setFrame:CGRectMake(0, 64, kScreenWidth, 64)];
         }];
     }
     else {
@@ -107,17 +128,77 @@
         self.lastFunction = button.tag;
         
         [UIView animateWithDuration:0.1 animations:^{
-            self.childFunctionView.y += 64;
+            if (button.tag == DIDrawingToolPenSelect) {
+                [self.linesizeFunctionView setFrame:CGRectMake(0, 64, kScreenWidth, 64)];
+            }
+            else if (button.tag == DIDrawingToolLineSize)
+            {
+                [self.penFunctionView setFrame:CGRectMake(0, 64, kScreenWidth, 64)];
+
+            }
         } completion:^(BOOL finished) {
+            
             [UIView animateWithDuration:0.1 animations:^{
-                self.childFunctionView.y -= 64;
-            } completion:^(BOOL finished) {
-                
+                if (button.tag == DIDrawingToolPenSelect) {
+                    [self.penFunctionView setFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+                }
+                else if (button.tag == DIDrawingToolLineSize)
+                {
+                    [self.linesizeFunctionView setFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+                }
+
             }];
             
         }];
     }
     
+}
+
+- (void)buildPenSelect
+{
+    [self.penFunctionView addSubview:self.roundPen];
+    [self.penFunctionView addSubview:self.markPen];
+    [self.penFunctionView addSubview:self.eraser];
+    
+    [self.roundPen autoSetDimensionsToSize:CGSizeMake(kScreenWidth / 3, 64)];
+    [self.markPen autoSetDimensionsToSize:CGSizeMake(kScreenWidth / 3, 64)];
+    [self.eraser autoSetDimensionsToSize:CGSizeMake(kScreenWidth / 3, 64)];
+
+    [self.roundPen autoPinEdgeToSuperviewEdge:ALEdgeTop];
+    [self.markPen autoPinEdgeToSuperviewEdge:ALEdgeTop];
+    [self.eraser autoPinEdgeToSuperviewEdge:ALEdgeTop];
+
+    [self.roundPen autoPinEdgeToSuperviewEdge:ALEdgeLeft];
+    [self.markPen autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.roundPen];
+    [self.eraser autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.markPen];
+    
+}
+
+- (void)buildLineSizeSelect
+{
+    [self.linesizeFunctionView addSubview:self.sizeSlider];
+    [self.linesizeFunctionView addSubview:self.lineSize];
+    
+    [self.lineSize autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:15];
+    [self.lineSize autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:24.5];
+    
+    [self.sizeSlider autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:15];
+    [self.sizeSlider autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:15];
+    
+
+    [self.sizeSlider autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.lineSize withOffset:15];
+    
+}
+
+- (void)penSelected
+{
+    NSLog(@"button clicked");
+}
+
+- (void)lineSizeSelected:(UISlider *)slider
+{
+    [self.lineSize setText:[NSString stringWithFormat:@"%.1f", slider.value]];
+
 }
 
 - (void)buttonClicked:(UIButton *)button
@@ -139,19 +220,33 @@
     if (!_whiteCover) {
         _whiteCover = [UIView newAutoLayoutView];
     }
-    [_whiteCover setBackgroundColor:WhiteColor];
+    [_whiteCover setBackgroundColor:DIColorWhite];
     
     return _whiteCover;
 }
 
-- (UIView *)childFunctionView
+- (UIView *)penFunctionView
 {
-    if (!_childFunctionView) {
-        _childFunctionView = [UIView newAutoLayoutView];
+    if (!_penFunctionView) {
+        _penFunctionView = [UIView newAutoLayoutView];
     }
-    [_childFunctionView setBackgroundColor:BlackColor];
     
-    return _childFunctionView;
+    [_penFunctionView setBackgroundColor:DIColorLightWhite];
+    _penFunctionView.userInteractionEnabled = YES;
+    
+    return _penFunctionView;
+}
+
+- (UIView *)linesizeFunctionView
+{
+    if (!_linesizeFunctionView) {
+        _linesizeFunctionView = [UIView newAutoLayoutView];
+    }
+    
+    [_linesizeFunctionView setBackgroundColor:DIColorLightWhite];
+    _linesizeFunctionView.userInteractionEnabled = YES;
+    
+    return _linesizeFunctionView;
 }
 
 - (UIButton *)penShapeButton
@@ -208,6 +303,70 @@
     [_deleteButton addGestureRecognizer:longPressGR];
     
     return _deleteButton;
+}
+
+- (UIButton *)roundPen
+{
+    if (!_roundPen) {
+        _roundPen = [UIButton newAutoLayoutView];
+    }
+    
+    [_roundPen setImage:Image(@"tool_roundpen") forState:UIControlStateNormal];
+    [_roundPen addTarget:self action:@selector(penSelected) forControlEvents:UIControlEventTouchUpInside];
+    
+    return _roundPen;
+}
+
+- (UIButton *)markPen
+{
+    if (!_markPen) {
+        _markPen = [UIButton newAutoLayoutView];
+    }
+    
+    [_markPen setImage:Image(@"tool_markpen") forState:UIControlStateNormal];
+    [_markPen addTarget:self action:@selector(penSelected) forControlEvents:UIControlEventTouchUpInside];
+
+    return _markPen;
+}
+
+- (UIButton *)eraser
+{
+    if (!_eraser) {
+        _eraser = [UIButton newAutoLayoutView];
+    }
+
+    [_eraser setImage:Image(@"tool_eraser") forState:UIControlStateNormal];
+    [_eraser addTarget:self action:@selector(penSelected) forControlEvents:UIControlEventTouchUpInside];
+
+    return _eraser;
+}
+
+- (UISlider *)sizeSlider
+{
+    if (!_sizeSlider) {
+        _sizeSlider = [UISlider newAutoLayoutView];
+    }
+    
+    [_sizeSlider addTarget:self action:@selector(lineSizeSelected:) forControlEvents:UIControlEventValueChanged];
+    
+    _sizeSlider.maximumValue = 50.0f;
+    _sizeSlider.minimumValue = 1.0f;
+    [_sizeSlider setValue:15.0f];
+
+    return _sizeSlider;
+}
+
+- (UILabel *)lineSize
+{
+    if (!_lineSize) {
+        _lineSize = [UILabel newAutoLayoutView];
+    }
+    
+    [_lineSize setFont:SYSTEMFONT(15)];
+    [_lineSize setTextColor:DIColorDarkGray];
+    
+    [_lineSize setText:@"15.0"];
+    return _lineSize;
 }
 
 @end

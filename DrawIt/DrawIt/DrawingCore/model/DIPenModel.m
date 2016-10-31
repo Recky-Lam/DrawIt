@@ -22,18 +22,4 @@
     return self;
 }
 
-- (void)setPentype:(DIPenType)pentype
-{
-    self.pentype = pentype;
-
-    if (pentype == DIPenTypeEraser) {
-        self.lineColor = WhiteColor;
-    }
-}
-
-- (DIPenType)pentype
-{
-    return self.pentype;
-}
-
 @end
