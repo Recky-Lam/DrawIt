@@ -39,8 +39,7 @@
 - (void)drawRect:(CGRect)rect {
     //获取上下文
     CGContextRef context = UIGraphicsGetCurrentContext();
-    //设置笔冒
-    CGContextSetLineCap(context, kCGLineCapRound);
+
     //设置画线的连接处　拐点圆滑
     CGContextSetLineJoin(context, kCGLineJoinRound);
     //画之前线
@@ -85,6 +84,18 @@
 
 - (void)drawPoint:(DIPointModel *)point Contex:(CGContextRef)context
 {
+    switch (point.pen.pentype) {
+        case DIPenTypeMarkPen:
+            //设置笔冒
+            CGContextSetLineCap(context, kCGLineCapSquare);
+            break;
+        case DIPenTypeRoundHeadPen:
+            CGContextSetLineCap(context, kCGLineCapRound);
+            break;
+        default:
+            break;
+    }
+    
     CGContextBeginPath(context);
     
     CGContextMoveToPoint(context, point.location.x, point.location.y);
@@ -110,6 +121,21 @@
 - (void)drawLine:(NSArray *)points Contex:(CGContextRef)context
 {
     DIPointModel *point = points[0];
+ 
+    switch (point.pen.pentype) {
+        case DIPenTypeMarkPen:
+            //设置笔冒
+            CGContextSetLineCap(context, kCGLineCapSquare);
+            break;
+        case DIPenTypeRoundHeadPen:
+            CGContextSetLineCap(context, kCGLineCapRound);
+            break;
+        case DIPenTypeEraser:
+            CGContextSetLineCap(context, kCGLineCapRound);
+            break;
+        default:
+            break;
+    }
     
     CGContextBeginPath(context);
     

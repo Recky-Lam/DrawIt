@@ -21,6 +21,8 @@ typedef enum {
 @optional
 
 -(void)didClickButtonOnIndex:(NSInteger)index;
+-(void)didSelectPentype:(DIPenType)index;
+-(void)didSelectLineSize:(CGFloat)size;
 
 @end
 

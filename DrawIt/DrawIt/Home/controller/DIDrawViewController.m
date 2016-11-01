@@ -13,9 +13,23 @@
 
 @property (nonatomic, strong) DIDrawingView *canvans;
 @property (nonatomic, strong) DIDrawingToolBar *toolBar;
+
+@property (nonatomic) CGFloat defaultLinesize;
+@property (nonatomic) DIPenType defaultPentype;
+
 @end
 
 @implementation DIDrawViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.defaultLinesize = 15.0f;
+        self.defaultPentype = DIPenTypeRoundHeadPen;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +61,8 @@
     
     DIPointModel *point = [[DIPointModel alloc] init];
     point.location = lastPoint;
+    point.pen.pentype = self.defaultPentype;
+    point.pen.lineWidth = [NSNumber numberWithFloat:self.defaultLinesize];
     
     [self.canvans addPointsToDataSource:point];
     [self.canvans setNeedsDisplay];
@@ -59,6 +75,8 @@
     
     DIPointModel *point = [[DIPointModel alloc] init];
     point.location = lastPoint;
+    point.pen.pentype = self.defaultPentype;
+    point.pen.lineWidth = [NSNumber numberWithFloat:self.defaultLinesize];
     
     [self.canvans addPointsToDataSource:point];
     [self.canvans setNeedsDisplay];
@@ -112,6 +130,16 @@
         default:
             break;
     }
+}
+
+- (void)didSelectPentype:(DIPenType)index
+{
+    self.defaultPentype = index;
+}
+
+- (void)didSelectLineSize:(CGFloat)size
+{
+    self.defaultLinesize = size;
 }
 
 @end

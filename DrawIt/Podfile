@@ -1,2 +1,3 @@
 pod 'SVProgressHUD'
 pod 'PureLayout'
+pod 'Color-Picker-for-iOS'

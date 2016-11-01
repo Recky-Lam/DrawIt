@@ -190,15 +190,20 @@
     
 }
 
-- (void)penSelected
+- (void)penSelected:(UIButton *)button
 {
-    NSLog(@"button clicked");
+    if ([self.toolBarDelegate respondsToSelector:@selector(didSelectPentype:)]) {
+        [self.toolBarDelegate didSelectPentype:button.tag];
+    }
 }
 
 - (void)lineSizeSelected:(UISlider *)slider
 {
     [self.lineSize setText:[NSString stringWithFormat:@"%.1f", slider.value]];
-
+     
+    if ([self.toolBarDelegate respondsToSelector:@selector(didSelectLineSize:)]) {
+        [self.toolBarDelegate didSelectLineSize:slider.value];
+    }
 }
 
 - (void)buttonClicked:(UIButton *)button
@@ -310,9 +315,9 @@
     if (!_roundPen) {
         _roundPen = [UIButton newAutoLayoutView];
     }
-    
+    [_roundPen setTag:DIPenTypeRoundHeadPen];
     [_roundPen setImage:Image(@"tool_roundpen") forState:UIControlStateNormal];
-    [_roundPen addTarget:self action:@selector(penSelected) forControlEvents:UIControlEventTouchUpInside];
+    [_roundPen addTarget:self action:@selector(penSelected:) forControlEvents:UIControlEventTouchUpInside];
     
     return _roundPen;
 }
@@ -322,9 +327,9 @@
     if (!_markPen) {
         _markPen = [UIButton newAutoLayoutView];
     }
-    
+    [_markPen setTag:DIPenTypeMarkPen];
     [_markPen setImage:Image(@"tool_markpen") forState:UIControlStateNormal];
-    [_markPen addTarget:self action:@selector(penSelected) forControlEvents:UIControlEventTouchUpInside];
+    [_markPen addTarget:self action:@selector(penSelected:) forControlEvents:UIControlEventTouchUpInside];
 
     return _markPen;
 }
@@ -334,9 +339,9 @@
     if (!_eraser) {
         _eraser = [UIButton newAutoLayoutView];
     }
-
+    [_eraser setTag:DIPenTypeEraser];
     [_eraser setImage:Image(@"tool_eraser") forState:UIControlStateNormal];
-    [_eraser addTarget:self action:@selector(penSelected) forControlEvents:UIControlEventTouchUpInside];
+    [_eraser addTarget:self action:@selector(penSelected:) forControlEvents:UIControlEventTouchUpInside];
 
     return _eraser;
 }
