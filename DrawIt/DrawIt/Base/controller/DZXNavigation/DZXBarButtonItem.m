@@ -29,7 +29,7 @@
     
     [barButtonItem setTitle:buttonTitle forState:UIControlStateNormal];
     //按钮字体颜色默认为白色
-    barButtonItem.tintColor = NavRightItemColor;
+    barButtonItem.tintColor = DIColorWhite;
     barButtonItem.titleLabel.font = [UIFont systemFontOfSize:17.0f];
     
     return barButtonItem;

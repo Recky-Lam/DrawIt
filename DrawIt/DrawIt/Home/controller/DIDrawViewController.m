@@ -7,15 +7,18 @@
 //
 
 #import "DIDrawViewController.h"
+#import "DIColorPickerViewController.h"
 
 @interface DIDrawViewController ()
-<DIDrawingToolBarDelegate>
+<DIDrawingToolBarDelegate,
+DIBaseViewControllerDelegate>
 
 @property (nonatomic, strong) DIDrawingView *canvans;
 @property (nonatomic, strong) DIDrawingToolBar *toolBar;
 
 @property (nonatomic) CGFloat defaultLinesize;
 @property (nonatomic) DIPenType defaultPentype;
+@property (nonatomic, strong) UIColor *defaultColor;
 
 @end
 
@@ -27,6 +30,7 @@
     if (self) {
         self.defaultLinesize = 15.0f;
         self.defaultPentype = DIPenTypeRoundHeadPen;
+        self.defaultColor = BlackColor;
     }
     return self;
 }
@@ -63,6 +67,7 @@
     point.location = lastPoint;
     point.pen.pentype = self.defaultPentype;
     point.pen.lineWidth = [NSNumber numberWithFloat:self.defaultLinesize];
+    point.pen.lineColor = self.defaultColor;
     
     [self.canvans addPointsToDataSource:point];
     [self.canvans setNeedsDisplay];
@@ -77,6 +82,7 @@
     point.location = lastPoint;
     point.pen.pentype = self.defaultPentype;
     point.pen.lineWidth = [NSNumber numberWithFloat:self.defaultLinesize];
+    point.pen.lineColor = self.defaultColor;
     
     [self.canvans addPointsToDataSource:point];
     [self.canvans setNeedsDisplay];
@@ -92,9 +98,9 @@
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     
     UIImage *picture = [self.contentView screenshotWithQuality:1];
-
+    
     UIImageWriteToSavedPhotosAlbum(picture, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-
+    
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
@@ -117,8 +123,9 @@
             
             break;
         case DIDrawingToolColorSelect:
-            
+            [self selectColor];
             break;
+            
         case DIDrawingToolUndo:
             [self.canvans undoLastAction];
             break;
@@ -132,6 +139,13 @@
     }
 }
 
+- (void)selectColor
+{
+    DIColorPickerViewController *picker = [[DIColorPickerViewController alloc] init];
+    [picker setUniversalDelegate:self];
+    [self presentController:picker];
+}
+
 - (void)didSelectPentype:(DIPenType)index
 {
     self.defaultPentype = index;
@@ -140,6 +154,11 @@
 - (void)didSelectLineSize:(CGFloat)size
 {
     self.defaultLinesize = size;
+}
+
+- (void)didFinishAciton:(id)obj1
+{
+    self.defaultColor = (UIColor *)obj1;
 }
 
 @end
