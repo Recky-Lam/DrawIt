@@ -23,4 +23,6 @@
 #define DIColorLightWhite   RGB(250, 250, 250, 1)
 #define DIColorMintGreen    RGB(185, 227, 217, 1)
 
+#define SavedImageNotifacation     @"SavedImageNotifacation"
+
 #endif /* ConfigMacros_h */

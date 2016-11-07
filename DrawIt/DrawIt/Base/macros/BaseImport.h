@@ -13,5 +13,7 @@
 #import "DINavgationController.h"
 #import "DrawingCore.h"
 #import "VExtensions.h"
+#import "DICacheManager.h"
+#import "DIPaintInfoModel.h"
 
 #endif /* BaseImport_h */

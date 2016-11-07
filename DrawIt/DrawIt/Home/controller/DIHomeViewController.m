@@ -8,10 +8,15 @@
 
 #import "DIHomeViewController.h"
 #import "DIDrawViewController.h"
+#import "DIPaintCollectionViewCell.h"
 
 @interface DIHomeViewController ()
+<UICollectionViewDelegate,
+UICollectionViewDataSource>
 
-@property (nonatomic, strong) UIButton *drawButton;
+@property (nonatomic, strong) NSMutableArray *paintsDataSource;
+
+@property (nonatomic, strong) UICollectionView *elementsCollectionView;
 
 @end
 
@@ -24,33 +29,79 @@
         
     [self.contentView setBackgroundColor:WhiteColor];
     
+    self.paintsDataSource = [NSMutableArray arrayWithArray:[DICacheManager getPaintCache]];
+    
     [self buildElements];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCollectionView) name:SavedImageNotifacation object:nil];
 }
 
 - (void)buildElements
 {
-    [self.contentView addSubview:self.drawButton];
+
+    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [flowLayout setMinimumInteritemSpacing:0];
+    [flowLayout setMinimumLineSpacing:0];
     
-    [self.drawButton autoSetDimensionsToSize:CGSizeMake(100, 100)];
-    [self.drawButton autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:100];
-    [self.drawButton autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.contentView withOffset:100];
+    self.elementsCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.contentView.height - kBottomBarHeight) collectionViewLayout:flowLayout];
+    [self.elementsCollectionView setDelegate:self];
+    [self.elementsCollectionView setDataSource:self];
+    [self.elementsCollectionView setBackgroundColor:RGB(241, 241, 241, 1)];
     
+    [self.elementsCollectionView registerClass:[DIPaintCollectionViewCell class] forCellWithReuseIdentifier:paintCellIdentifier];
+    
+    [self.contentView addSubview:self.elementsCollectionView];
 }
 
-- (UIButton *)drawButton
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (!_drawButton) {
-        _drawButton = [UIButton newAutoLayoutView];
+    return [self.paintsDataSource count] + 1;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(kScreenWidth/5, kScreenWidth/5);
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DIPaintInfoModel *paint = [[DIPaintInfoModel alloc] init];
+    
+    if ([self.paintsDataSource count] > 0) {
+        if (indexPath.row == self.paintsDataSource.count) {
+            paint.thumbImage = Image(@"paint_add");
+        }
+        else {
+            paint = self.paintsDataSource[indexPath.row];
+        }
+    }
+    else {
+        paint.thumbImage = Image(@"paint_add");
     }
     
-    [_drawButton setTitle:@"draw" forState:UIControlStateNormal];
-    [_drawButton setTitleColor:BlackColor forState:UIControlStateNormal];
-    [_drawButton addTarget:self action:@selector(drawButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    return _drawButton;
+    DIPaintCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:paintCellIdentifier forIndexPath:indexPath];
+    [cell configCellDataWithData:paint Indexpath:indexPath];
+    return cell;
 }
 
-- (void)drawButtonAction:(UIButton *)button
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self presentController:[[DIDrawViewController alloc] init]];
+    if ([self.paintsDataSource count] > 0) {
+        if (indexPath.row == self.paintsDataSource.count) {
+            [self presentController:[[DIDrawViewController alloc] init]];
+        }
+    }
+    else {
+        [self presentController:[[DIDrawViewController alloc] init]];
+    }
 }
+
+- (void)refreshCollectionView
+{
+    self.paintsDataSource = [NSMutableArray arrayWithArray:[DICacheManager getPaintCache]];
+
+    [self.elementsCollectionView reloadData];
+}
+
 @end

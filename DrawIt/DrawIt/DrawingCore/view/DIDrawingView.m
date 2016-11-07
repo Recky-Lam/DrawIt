@@ -10,8 +10,6 @@
 
 @interface DIDrawingView ()
 
-@property (nonatomic, strong) NSMutableArray *historyPoints;
-
 @end
 
 @implementation DIDrawingView

@@ -19,6 +19,7 @@ DIBaseViewControllerDelegate>
 @property (nonatomic) CGFloat defaultLinesize;
 @property (nonatomic) DIPenType defaultPentype;
 @property (nonatomic, strong) UIColor *defaultColor;
+@property (nonatomic, strong) UIColor *lastColor;
 
 @end
 
@@ -99,7 +100,22 @@ DIBaseViewControllerDelegate>
     
     UIImage *picture = [self.contentView screenshotWithQuality:1];
     
+    DIPaintInfoModel *paint = [[DIPaintInfoModel alloc] init];
+    paint.paintPaths = [NSArray arrayWithArray:self.canvans.historyPoints];
+    paint.thumbImage = picture;
+    
+    NSMutableArray *localCache = [NSMutableArray arrayWithArray:[DICacheManager getPaintCache]];
+    [localCache addObject:paint];
+    
+    [DICacheManager savePaintCacheWithArray:localCache];
+    
     UIImageWriteToSavedPhotosAlbum(picture, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SavedImageNotifacation object:nil userInfo:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     
 }
 
@@ -148,7 +164,15 @@ DIBaseViewControllerDelegate>
 
 - (void)didSelectPentype:(DIPenType)index
 {
-    self.defaultPentype = index;
+    if (index == DIPenTypeEraser) {
+        self.defaultPentype = DIPenTypeEraser;
+        self.lastColor = self.defaultColor;
+        self.defaultColor = WhiteColor;
+    }
+    else {
+        self.defaultColor = self.lastColor;
+        self.defaultPentype = index;
+    }
 }
 
 - (void)didSelectLineSize:(CGFloat)size
@@ -159,6 +183,7 @@ DIBaseViewControllerDelegate>
 - (void)didFinishAciton:(id)obj1
 {
     self.defaultColor = (UIColor *)obj1;
+    self.lastColor = self.defaultColor;
 }
 
 @end

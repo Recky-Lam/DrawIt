@@ -195,6 +195,13 @@
     if ([self.toolBarDelegate respondsToSelector:@selector(didSelectPentype:)]) {
         [self.toolBarDelegate didSelectPentype:button.tag];
     }
+    
+    self.isChildFunctionViewShow = !self.isChildFunctionViewShow;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        [self.penFunctionView setFrame:CGRectMake(0, 64, kScreenWidth, 64)];
+    }];
+    
 }
 
 - (void)lineSizeSelected:(UISlider *)slider
@@ -304,7 +311,7 @@
     [_deleteButton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cleanCanvans)];
-    longPressGR.minimumPressDuration = 1.0;
+    longPressGR.minimumPressDuration = 0.7;
     [_deleteButton addGestureRecognizer:longPressGR];
     
     return _deleteButton;

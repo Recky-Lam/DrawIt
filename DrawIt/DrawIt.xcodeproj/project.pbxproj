@@ -36,6 +36,10 @@
 		6172E1951DC87903003FD670 /* RSGenerateOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172E1821DC87903003FD670 /* RSGenerateOperation.m */; };
 		6172E1961DC87903003FD670 /* RSSelectionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172E1841DC87903003FD670 /* RSSelectionLayer.m */; };
 		6172E1991DC8796C003FD670 /* DIColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6172E1981DC8796C003FD670 /* DIColorPickerViewController.m */; };
+		61A418461DD0439400745071 /* VFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A418431DD0439400745071 /* VFileManager.m */; };
+		61A418471DD0439400745071 /* DICacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A418451DD0439400745071 /* DICacheManager.m */; };
+		61A418531DD05EE500745071 /* DIPaintCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A418521DD05EE500745071 /* DIPaintCollectionViewCell.m */; };
+		61A418561DD0795600745071 /* DIPaintInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A418551DD0795500745071 /* DIPaintInfoModel.m */; };
 		61FA6F7B1DBDD6260035ED8E /* DZXBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F761DBDD6260035ED8E /* DZXBarButtonItem.m */; };
 		61FA6F7C1DBDD6260035ED8E /* DZXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F781DBDD6260035ED8E /* DZXNavigationController.m */; };
 		61FA6F7D1DBDD6260035ED8E /* DZXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F7A1DBDD6260035ED8E /* DZXViewController.m */; };
@@ -144,6 +148,14 @@
 		6172E1841DC87903003FD670 /* RSSelectionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSelectionLayer.m; sourceTree = "<group>"; };
 		6172E1971DC8796C003FD670 /* DIColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIColorPickerViewController.h; sourceTree = "<group>"; };
 		6172E1981DC8796C003FD670 /* DIColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIColorPickerViewController.m; sourceTree = "<group>"; };
+		61A418421DD0439400745071 /* VFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VFileManager.h; sourceTree = "<group>"; };
+		61A418431DD0439400745071 /* VFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VFileManager.m; sourceTree = "<group>"; };
+		61A418441DD0439400745071 /* DICacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DICacheManager.h; sourceTree = "<group>"; };
+		61A418451DD0439400745071 /* DICacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DICacheManager.m; sourceTree = "<group>"; };
+		61A418511DD05EE500745071 /* DIPaintCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIPaintCollectionViewCell.h; sourceTree = "<group>"; };
+		61A418521DD05EE500745071 /* DIPaintCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIPaintCollectionViewCell.m; sourceTree = "<group>"; };
+		61A418541DD0795500745071 /* DIPaintInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIPaintInfoModel.h; sourceTree = "<group>"; };
+		61A418551DD0795500745071 /* DIPaintInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIPaintInfoModel.m; sourceTree = "<group>"; };
 		61FA6F731DBDD39D0035ED8E /* BaseImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseImport.h; sourceTree = "<group>"; };
 		61FA6F751DBDD6260035ED8E /* DZXBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZXBarButtonItem.h; sourceTree = "<group>"; };
 		61FA6F761DBDD6260035ED8E /* DZXBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZXBarButtonItem.m; sourceTree = "<group>"; };
@@ -227,7 +239,6 @@
 				612407741DBDC3B7006FFAF4 /* model */,
 				612407751DBDC3B7006FFAF4 /* service */,
 				612407761DBDC3B7006FFAF4 /* view */,
-				612407771DBDC3B7006FFAF4 /* viewModel */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -267,13 +278,6 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		612407771DBDC3B7006FFAF4 /* viewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = viewModel;
-			sourceTree = "<group>";
-		};
 		612407781DBDC3B7006FFAF4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +285,6 @@
 				6124077A1DBDC3B7006FFAF4 /* model */,
 				6124077B1DBDC3B7006FFAF4 /* service */,
 				6124077C1DBDC3B7006FFAF4 /* view */,
-				6124077D1DBDC3B7006FFAF4 /* viewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -301,6 +304,8 @@
 		6124077A1DBDC3B7006FFAF4 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				61A418541DD0795500745071 /* DIPaintInfoModel.h */,
+				61A418551DD0795500745071 /* DIPaintInfoModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -315,15 +320,10 @@
 		6124077C1DBDC3B7006FFAF4 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				61A418511DD05EE500745071 /* DIPaintCollectionViewCell.h */,
+				61A418521DD05EE500745071 /* DIPaintCollectionViewCell.m */,
 			);
 			path = view;
-			sourceTree = "<group>";
-		};
-		6124077D1DBDC3B7006FFAF4 /* viewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = viewModel;
 			sourceTree = "<group>";
 		};
 		612407811DBDC7AF006FFAF4 /* macros */ = {
@@ -535,6 +535,25 @@
 			path = Manipulators;
 			sourceTree = "<group>";
 		};
+		61A418401DD0439400745071 /* CacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				61A418411DD0439400745071 /* VFileManager */,
+				61A418441DD0439400745071 /* DICacheManager.h */,
+				61A418451DD0439400745071 /* DICacheManager.m */,
+			);
+			path = CacheManager;
+			sourceTree = "<group>";
+		};
+		61A418411DD0439400745071 /* VFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				61A418421DD0439400745071 /* VFileManager.h */,
+				61A418431DD0439400745071 /* VFileManager.m */,
+			);
+			path = VFileManager;
+			sourceTree = "<group>";
+		};
 		61FA6F741DBDD6260035ED8E /* DZXNavigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,7 +574,6 @@
 				61FA6F951DBDE9F40035ED8E /* model */,
 				61FA6F961DBDE9F40035ED8E /* service */,
 				61FA6F971DBDE9F40035ED8E /* view */,
-				61FA6F981DBDE9F40035ED8E /* viewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -590,16 +608,10 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		61FA6F981DBDE9F40035ED8E /* viewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = viewModel;
-			sourceTree = "<group>";
-		};
 		61FA6FA11DBDFBFE0035ED8E /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				61A418401DD0439400745071 /* CacheManager */,
 				61FA700B1DBE0ED10035ED8E /* VExtensions */,
 			);
 			path = Public;
@@ -837,7 +849,9 @@
 				6172E18D1DC87903003FD670 /* BitmapCropManipulator.m in Sources */,
 				61FA6F801DBDDF1B0035ED8E /* DIHomeViewController.m in Sources */,
 				6172E1961DC87903003FD670 /* RSSelectionLayer.m in Sources */,
+				61A418561DD0795600745071 /* DIPaintInfoModel.m in Sources */,
 				6172E1861DC87903003FD670 /* BitmapContextRep.m in Sources */,
+				61A418531DD05EE500745071 /* DIPaintCollectionViewCell.m in Sources */,
 				6172E1191DC208B7003FD670 /* DIPointModel.m in Sources */,
 				61FA6FA01DBDF5D10035ED8E /* DINavgationController.m in Sources */,
 				6172E1851DC87903003FD670 /* ANImageBitmapRep.m in Sources */,
@@ -859,6 +873,7 @@
 				6172E18A1DC87903003FD670 /* CGContextCreator.m in Sources */,
 				61FA6F7D1DBDD6260035ED8E /* DZXViewController.m in Sources */,
 				6172E1951DC87903003FD670 /* RSGenerateOperation.m in Sources */,
+				61A418471DD0439400745071 /* DICacheManager.m in Sources */,
 				61FA6F7C1DBDD6260035ED8E /* DZXNavigationController.m in Sources */,
 				61FA70331DBE0ED10035ED8E /* UIView+Extensions.m in Sources */,
 				6172E1881DC87903003FD670 /* OSCommonImage.m in Sources */,
@@ -866,6 +881,7 @@
 				61FA70301DBE0ED10035ED8E /* UIColor+Extensions.m in Sources */,
 				61FA70321DBE0ED10035ED8E /* UIImage+Extensions.m in Sources */,
 				61FA70271DBE0ED10035ED8E /* CGRect+Extensions.m in Sources */,
+				61A418461DD0439400745071 /* VFileManager.m in Sources */,
 				6172E1941DC87903003FD670 /* RSColorPickerView.m in Sources */,
 				61FA702C1DBE0ED10035ED8E /* NSObject+Extensions.m in Sources */,
 				6172E18B1DC87903003FD670 /* CGImageContainer.m in Sources */,

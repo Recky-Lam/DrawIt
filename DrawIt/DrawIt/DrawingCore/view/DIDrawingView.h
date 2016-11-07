@@ -12,6 +12,7 @@
 @interface DIDrawingView : UIView
 
 @property (nonatomic, strong) NSMutableArray *movePoints;
+@property (nonatomic, strong) NSMutableArray *historyPoints;
 
 - (void)addPointsToDataSource:(DIPointModel *)point;
 - (void)saveCurrentPath;
