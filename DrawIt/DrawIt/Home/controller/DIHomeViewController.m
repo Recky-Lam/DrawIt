@@ -91,6 +91,10 @@ UICollectionViewDataSource>
         if (indexPath.row == self.paintsDataSource.count) {
             [self presentController:[[DIDrawViewController alloc] init]];
         }
+        else
+        {
+            
+        }
     }
     else {
         [self presentController:[[DIDrawViewController alloc] init]];
