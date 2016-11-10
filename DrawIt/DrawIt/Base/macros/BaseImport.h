@@ -15,5 +15,6 @@
 #import "VExtensions.h"
 #import "DICacheManager.h"
 #import "DIPaintInfoModel.h"
+#import "XDAlertController.h"
 
 #endif /* BaseImport_h */

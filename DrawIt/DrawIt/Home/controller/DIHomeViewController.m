@@ -30,7 +30,7 @@ UICollectionViewDataSource>
     [self.contentView setBackgroundColor:WhiteColor];
     
     self.paintsDataSource = [NSMutableArray arrayWithArray:[DICacheManager getPaintCache]];
-    
+    DIPaintInfoModel *model = [self.paintsDataSource lastObject];
     [self buildElements];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCollectionView) name:SavedImageNotifacation object:nil];
@@ -93,7 +93,26 @@ UICollectionViewDataSource>
         }
         else
         {
+            XDAlertController *alert = [XDAlertController alertControllerWithTitle:nil message:nil preferredStyle:XDAlertControllerStyleActionSheet];
+            XDAlertAction *action1 = [XDAlertAction actionWithTitle:@"编辑" style: XDAlertActionStyleDefault handler:^( XDAlertAction * _Nonnull action) {
+                DIPaintInfoModel *paint = self.paintsDataSource[indexPath.row];
+                DIDrawViewController *controller  = [[DIDrawViewController alloc] initWithHistory:paint];
+                [self presentController:controller];
+            }];
+            XDAlertAction *action2 = [XDAlertAction actionWithTitle:@"删除" style:XDAlertActionStyleDestructive handler:^(XDAlertAction * _Nonnull action) {
+                [self.paintsDataSource removeObjectAtIndex:indexPath.row];
+                [DICacheManager savePaintCacheWithArray:self.paintsDataSource];
+                [self.elementsCollectionView reloadData];
+            }];
+            XDAlertAction *action3 = [XDAlertAction actionWithTitle:@"取消" style:XDAlertActionStyleCancel handler:^(XDAlertAction * _Nonnull action) {
+                
+            }];
             
+            [alert addAction:action1];
+            [alert addAction:action2];
+            [alert addAction:action3];
+            
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }
     else {

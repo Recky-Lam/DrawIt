@@ -28,7 +28,6 @@
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.thumbImage forKey:@"thumbImage"];
-
 }
 
 

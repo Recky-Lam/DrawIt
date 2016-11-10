@@ -21,6 +21,10 @@ DIBaseViewControllerDelegate>
 @property (nonatomic, strong) UIColor *defaultColor;
 @property (nonatomic, strong) UIColor *lastColor;
 
+@property (nonatomic, strong) NSTimer *saveDataTimer;
+
+@property (nonatomic, strong) NSArray *historyPoints;
+
 @end
 
 @implementation DIDrawViewController
@@ -36,11 +40,24 @@ DIBaseViewControllerDelegate>
     return self;
 }
 
+- (instancetype)initWithHistory:(DIPaintInfoModel *)history
+{
+    self = [super init];
+    if (self) {
+        self.defaultLinesize = 15.0f;
+        self.defaultPentype = DIPenTypeRoundHeadPen;
+        self.defaultColor = BlackColor;
+        
+        self.historyPoints = [NSArray arrayWithArray:history.paintPaths];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setTitle:@"画吧画吧画吧" backButton:YES];
+    [self setTitle:@"" backButton:YES];
     
     [self.contentView setHeight:self.contentView.height - 84];
     
@@ -57,6 +74,12 @@ DIBaseViewControllerDelegate>
     [self.toolBar setToolBarDelegate:self];
     
     [self.view addSubview:self.toolBar];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissController) name:SVProgressHUDDidDisappearNotification object:nil];
+    
+    if ([self.historyPoints count] > 0) {
+        
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
@@ -96,9 +119,17 @@ DIBaseViewControllerDelegate>
 
 - (void)saveCurrentImage:(UIButton *)button
 {
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD show];
     
+    [self.saveDataTimer invalidate];
+    self.saveDataTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(saveData) userInfo:nil repeats:NO];
+
+}
+
+- (void)saveData
+{
     UIImage *picture = [self.contentView screenshotWithQuality:1];
+    UIImageWriteToSavedPhotosAlbum(picture, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     
     DIPaintInfoModel *paint = [[DIPaintInfoModel alloc] init];
     paint.paintPaths = [NSArray arrayWithArray:self.canvans.historyPoints];
@@ -108,15 +139,15 @@ DIBaseViewControllerDelegate>
     [localCache addObject:paint];
     
     [DICacheManager savePaintCacheWithArray:localCache];
-    
-    UIImageWriteToSavedPhotosAlbum(picture, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    
+}
+
+- (void)dismissController
+{
     [[NSNotificationCenter defaultCenter] postNotificationName:SavedImageNotifacation object:nil userInfo:nil];
     
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
-    
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo

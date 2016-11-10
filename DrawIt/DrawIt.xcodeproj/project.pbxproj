@@ -40,6 +40,7 @@
 		61A418471DD0439400745071 /* DICacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A418451DD0439400745071 /* DICacheManager.m */; };
 		61A418531DD05EE500745071 /* DIPaintCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A418521DD05EE500745071 /* DIPaintCollectionViewCell.m */; };
 		61A418561DD0795600745071 /* DIPaintInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A418551DD0795500745071 /* DIPaintInfoModel.m */; };
+		61B4CCC61DD30466003411A3 /* XDAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B4CCC51DD30466003411A3 /* XDAlertController.m */; };
 		61FA6F7B1DBDD6260035ED8E /* DZXBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F761DBDD6260035ED8E /* DZXBarButtonItem.m */; };
 		61FA6F7C1DBDD6260035ED8E /* DZXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F781DBDD6260035ED8E /* DZXNavigationController.m */; };
 		61FA6F7D1DBDD6260035ED8E /* DZXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F7A1DBDD6260035ED8E /* DZXViewController.m */; };
@@ -156,6 +157,8 @@
 		61A418521DD05EE500745071 /* DIPaintCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIPaintCollectionViewCell.m; sourceTree = "<group>"; };
 		61A418541DD0795500745071 /* DIPaintInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIPaintInfoModel.h; sourceTree = "<group>"; };
 		61A418551DD0795500745071 /* DIPaintInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIPaintInfoModel.m; sourceTree = "<group>"; };
+		61B4CCC41DD30466003411A3 /* XDAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDAlertController.h; sourceTree = "<group>"; };
+		61B4CCC51DD30466003411A3 /* XDAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDAlertController.m; sourceTree = "<group>"; };
 		61FA6F731DBDD39D0035ED8E /* BaseImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseImport.h; sourceTree = "<group>"; };
 		61FA6F751DBDD6260035ED8E /* DZXBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZXBarButtonItem.h; sourceTree = "<group>"; };
 		61FA6F761DBDD6260035ED8E /* DZXBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZXBarButtonItem.m; sourceTree = "<group>"; };
@@ -554,6 +557,15 @@
 			path = VFileManager;
 			sourceTree = "<group>";
 		};
+		61B4CCC31DD30466003411A3 /* XDAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				61B4CCC41DD30466003411A3 /* XDAlertController.h */,
+				61B4CCC51DD30466003411A3 /* XDAlertController.m */,
+			);
+			path = XDAlertController;
+			sourceTree = "<group>";
+		};
 		61FA6F741DBDD6260035ED8E /* DZXNavigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +623,7 @@
 		61FA6FA11DBDFBFE0035ED8E /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				61B4CCC31DD30466003411A3 /* XDAlertController */,
 				61A418401DD0439400745071 /* CacheManager */,
 				61FA700B1DBE0ED10035ED8E /* VExtensions */,
 			);
@@ -882,6 +895,7 @@
 				61FA70321DBE0ED10035ED8E /* UIImage+Extensions.m in Sources */,
 				61FA70271DBE0ED10035ED8E /* CGRect+Extensions.m in Sources */,
 				61A418461DD0439400745071 /* VFileManager.m in Sources */,
+				61B4CCC61DD30466003411A3 /* XDAlertController.m in Sources */,
 				6172E1941DC87903003FD670 /* RSColorPickerView.m in Sources */,
 				61FA702C1DBE0ED10035ED8E /* NSObject+Extensions.m in Sources */,
 				6172E18B1DC87903003FD670 /* CGImageContainer.m in Sources */,

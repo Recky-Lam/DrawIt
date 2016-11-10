@@ -10,4 +10,6 @@
 
 @interface DIDrawViewController : DIBaseViewController
 
+- (instancetype)initWithHistory:(DIPaintInfoModel *)history;
+
 @end
