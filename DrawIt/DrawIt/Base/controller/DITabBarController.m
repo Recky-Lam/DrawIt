@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //设置不超出边界，only support ios7
+
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -41,7 +41,7 @@
 -(void)initNormalTabViewControllerWithIndex:(NSInteger)index
 {
     _homeVC.tabBarItem = [self createTabBarItem:@"Draw" normalImage:@"tab_home" selectedImage:@"tab_home_hl" itemTag:0];
-    _mineVC.tabBarItem = [self createTabBarItem:@"Mine" normalImage:@"tab_mine" selectedImage:@"tab_mine_hl" itemTag:1];
+    _mineVC.tabBarItem = [self createTabBarItem:@"Pixel" normalImage:@"tab_mine" selectedImage:@"tab_mine_hl" itemTag:1];
 
     [self.tabBar setBarStyle:UIBarStyleDefault];
     NSArray *tabItems = [NSArray arrayWithObjects:_homeNav, _mineNav, nil];
