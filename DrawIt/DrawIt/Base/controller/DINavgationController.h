@@ -8,8 +8,6 @@
 
 #import "DZXNavigationController.h"
 
-#import "DZXNavigationController.h"
-
 @interface DINavgationController : DZXNavigationController
 
 @end

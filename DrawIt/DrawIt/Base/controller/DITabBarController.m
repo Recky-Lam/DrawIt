@@ -25,7 +25,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self setDelegate:self];
-    
+
     _homeVC = [[DIHomeViewController alloc] init];
     _mineVC = [[DIMineViewController alloc] init];
     
