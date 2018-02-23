@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B61076AD9B3411C4C9EA5C7F10624A1730C0B890",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B61076AD9B3411C4C9EA5C7F10624A1730C0B890" : 9223372036854775807,
+    "83D3D1EBD13A18602922E3D735F518B614DD31B2" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "16F77621-60A2-4E3B-B1EE-5BE347F3DFED",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B61076AD9B3411C4C9EA5C7F10624A1730C0B890" : "DrawIt\/",
+    "83D3D1EBD13A18602922E3D735F518B614DD31B2" : "DrawIt\/DrawIt\/DrawIt\/Public\/GraffitiBoard\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DrawIt",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DrawIt\/DrawIt.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Pikdays\/GraffitiBoard.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "83D3D1EBD13A18602922E3D735F518B614DD31B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Recky-Lin\/DrawIt.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B61076AD9B3411C4C9EA5C7F10624A1730C0B890"
+    }
+  ]
+}
